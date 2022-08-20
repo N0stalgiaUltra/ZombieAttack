@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] private PhotonView view;
     Vector3 movement;
     [SerializeField] float rotationSpeed;
+
+    [SerializeField] private bool lockRotationX;
+    [SerializeField] private bool lockRotationZ;
+    private RaycastHit hit;
     void Start()
     {
         //InputManager.OnMove += Move;
@@ -82,10 +86,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePos - rb.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (!Physics.Raycast(ray, out hit))
+            return;
+
+        Vector3 targetRot = ray.GetPoint(hit.distance);
+        transform.LookAt(new Vector3 (targetRot.x,transform.position.y, targetRot.z));
+
     }
     void FixedUpdate()
     {
