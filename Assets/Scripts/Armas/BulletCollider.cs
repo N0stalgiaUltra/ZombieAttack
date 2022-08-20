@@ -30,6 +30,7 @@ public class BulletCollider : MonoBehaviour, ICollider
     private void OnTriggerEnter(Collider other)
     {
         GetHit();
+        print(other.tag);
     }
 
 }
