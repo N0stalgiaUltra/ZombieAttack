@@ -11,6 +11,7 @@ public class GunLogic : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     [SerializeField] private ParticleSystem muzzleFire;
     [SerializeField] private Collider gunCollider;
+    public GameObject laserSight;
 
     public static bool reloading;
     private int ammo;

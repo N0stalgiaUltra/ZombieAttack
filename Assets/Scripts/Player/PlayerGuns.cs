@@ -46,43 +46,31 @@ public class PlayerGuns : PickUpItems
     /// </summary>
     private void PickUpGun()
     {
-        //if (view.IsMine && canPick)
-        //{
-        //    if (playerGun != null)//troca a arma
-        //    {
-        //        playerGun.transform.SetParent(null);
-        //        Destroy(playerGun.gameObject);
-        //        //playerGun = null;
-        //    }
-            
-        //    playerGun = aux.GetComponent<GunLogic>();
-
-        //    playerGun.transform.position = playerArm.position;
-        //    playerGun.transform.rotation = playerArm.rotation;
-        //    playerGun.transform.parent = playerArm;
-
-        //    aux = null;
-        //    canPick = false;
-        //    playerGun.DisableCollider();
-        //}
-
-        if (playerGun != null && canPick)//troca a arma
+        //Posso pegar arma
+        if (canPick)
         {
-            playerGun.transform.SetParent(null);
-            Destroy(playerGun.gameObject);
-            //playerGun = null;
+            //se ja tenho arma
+            if(playerGun != null)
+            {
+                playerGun.transform.SetParent(null);
+                Destroy(playerGun.gameObject);
+                //troco de arma
+            }
+
+            playerGun = aux.GetComponent<GunLogic>();
+
+            playerGun.transform.position = playerArm.position;
+            playerGun.transform.rotation = playerArm.rotation;
+            playerGun.transform.parent = playerArm;
+
+            playerGun.laserSight.SetActive(true);
+            aux = null;
+            canPick = false;
+            playerGun.DisableCollider();
         }
+        else
+            return;
 
-        playerGun = aux.GetComponent<GunLogic>();
-
-        playerGun.transform.position = playerArm.position;
-        playerGun.transform.rotation = playerArm.rotation;
-        playerGun.transform.parent = playerArm;
-
-        aux = null;
-        canPick = false;
-        playerGun.DisableCollider();
-        //else return;
     }
 
     private void OnDisable()
