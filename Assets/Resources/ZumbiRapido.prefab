@@ -785,7 +785,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5804659856604856503}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Speed: 3
   m_Acceleration: 2
   avoidancePriority: 50
@@ -842,3 +842,4 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 668db36b098cd8f438cfeb5f8b9b87ac, type: 2}
   agent: {fileID: 6934266561946075258}
   enemyAnim: {fileID: 5220799677871205534}
+  currentPlayer: {fileID: 0}

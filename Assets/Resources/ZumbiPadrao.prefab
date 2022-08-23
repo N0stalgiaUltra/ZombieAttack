@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4941635705825534}
   m_Layer: 0
   m_Name: ZumbiPadrao
-  m_TagString: InimigoPadrao
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -785,7 +785,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7643729992834649281}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Speed: 3
   m_Acceleration: 2
   avoidancePriority: 50
@@ -842,3 +842,4 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 91f9015bb1e810347af6386628c36278, type: 2}
   agent: {fileID: 7542520616695737761}
   enemyAnim: {fileID: 867274814960438382}
+  currentPlayer: {fileID: 0}

@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator enemyAnim;
     
-    private GameObject currentPlayer;
+    [SerializeField] private GameObject currentPlayer;
     private bool isMoving;
 
     private float counter;

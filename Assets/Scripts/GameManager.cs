@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using Photon.Pun;
-//using Cinemachine;
+using Cinemachine;
 using UnityEngine.UI;
 /// <summary>
 /// Script usado para gerenciar o jogo
@@ -19,8 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerCam playerCam;
 
-    [SerializeField] private Button startGameBtn;
-    //[SerializeField] private CinemachineVirtualCamera cam;
+    [SerializeField] private CinemachineVirtualCamera cam;
     private void Awake()
     {
         if (instance != null)
@@ -30,8 +29,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Time.timeScale = 0;
-        startGameBtn.onClick.AddListener(StartGame);
+        //Time.timeScale = 0;
+        Time.timeScale = 1f;
+        //SpawnPlayer();
+        hordeManager.StartRound();
     }
     /// <summary>
     /// Usado para iniciar o game
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Time.timeScale = 1f;
-        startGameBtn.gameObject.SetActive(false);
         //SpawnPlayer();
         hordeManager.StartRound();
     }
