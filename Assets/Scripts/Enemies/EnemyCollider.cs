@@ -16,6 +16,7 @@ public class EnemyCollider : EnemyHealth, ICollider
     /// </summary>
     public void GetHit()
     {
+        print(damage);
         Damage(damage);
     }
 

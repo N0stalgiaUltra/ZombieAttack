@@ -16,7 +16,7 @@ public class BulletCollider : MonoBehaviour, ICollider
         DeactivateBullet();
     }
 
-    //private void OnBecameInvisible() => DeactivateBullet();
+    private void OnBecameInvisible() => DeactivateBullet();
 
     /// <summary>
     /// Metodo para desativar a bala e retornar ela para o Pool
