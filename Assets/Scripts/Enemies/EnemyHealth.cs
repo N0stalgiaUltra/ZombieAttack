@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     {
         enemyHealth = enemyData.health;
         enemyParent = this.gameObject.transform.parent.gameObject;
-        print(enemyParent.name);
+        //print(enemyParent.name);
         enemySpawner = GetComponentInParent<EnemySpawner>();
     }
     private void Update()
@@ -38,6 +38,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
     {
         if (this.enemyHealth > 0)
             this.enemyHealth -= value;
+
+        print(this.enemyHealth);
     }
 
     /// <summary>

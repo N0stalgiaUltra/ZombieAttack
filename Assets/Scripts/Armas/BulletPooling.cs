@@ -36,18 +36,17 @@ public class BulletPooling : MonoBehaviour
     /// </summary>
     /// <param name="bulletSpawn"> transform que vai ser referencia para a instância </param>
     /// <returns></returns>
-    public GameObject BulletSpawn(Transform bulletSpawn)
+    public BulletLogic BulletSpawn(Transform bulletSpawn)
     {
         if (bulletQueue.Count != 0)
         {
             
-            GameObject aux = bulletQueue.Dequeue().gameObject;
-            aux.GetComponent<BulletLogic>().playerTransform = bulletSpawn;
-            aux.transform.position = bulletSpawn.position;
-            aux.transform.rotation = bulletSpawn.rotation;
-            aux.transform.parent = bulletSpawn;
+            BulletLogic aux = bulletQueue.Dequeue();
+            aux.gameObject.GetComponent<BulletLogic>().playerTransform = bulletSpawn;
+            aux.damage = bulletSpawn.GetComponentInParent<GunLogic>().Damage;
+            
 
-            aux.SetActive(true);
+            aux.gameObject.SetActive(true);
             return aux;
         }
         else

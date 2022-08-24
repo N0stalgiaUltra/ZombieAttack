@@ -29,8 +29,9 @@ public class BulletCollider : MonoBehaviour, ICollider
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.layer);
         GetHit();
-        print(other.tag);
+        
     }
 
 }

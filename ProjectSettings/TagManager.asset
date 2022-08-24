@@ -22,8 +22,8 @@ TagManager:
   - IgnoreCollision
   - Bullet
   - Player
-  - 
-  - 
+  - Gun
+  - Enemy
   - 
   - 
   - 
