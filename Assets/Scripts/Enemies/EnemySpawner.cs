@@ -15,26 +15,26 @@ public class EnemySpawner : MonoBehaviour
     private Queue<GameObject> enemyPool = new Queue<GameObject>();
     void Start()
     {
-        int aux = hordeManager.totalEnemiesCount;
-        for (int i = 0; i < enemiesType.Count; i++)
-            spawnChance.Add(enemiesType[i].spawnPercentage);
-        
-        FillQueue(aux);
+       
         
     }
 
+
     /// <summary>
-    /// Script responsável por adicionar os inimigos na fila(Queue)
+    /// Metodo responsável por adicionar os inimigos na fila(Queue)
     /// </summary>
-    /// <param name="aux">total de inimigos</param>
-    private void FillQueue(int aux)
+    /// <param name="count">total de inimigos</param>
+    private void FillQueue(int count, int aux)
     {
-        for (int i = 0; i < aux; i++)
+        for (int i = 0; i < count; i++)
         {
             GameObject aux2 = Instantiate(enemiesType[GetRandomSpawn()].prefab, spawnPosition[Random.Range(0,3)]);
             aux2.SetActive(false);
             enemyPool.Enqueue(aux2);
         }
+
+        StartCoroutine(DequeueEnemies(aux));
+
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (spawnChance[i] / total + aux >= random)
                 return i;
-            else 
+            else
                 aux += spawnChance[i] / total;
         }
 
@@ -66,17 +66,32 @@ public class EnemySpawner : MonoBehaviour
     /// <param name="aux">indice do inimigo na fila</param>
     public void ActivateEnemies(int aux)
     {
-        if(enemyPool.Count == 0)
-        {
-            FillQueue(aux);
-        }
+        int count = hordeManager.totalEnemiesCount;
+        for (int i = 0; i < enemiesType.Count; i++)
+            spawnChance.Add(enemiesType[i].spawnPercentage);
+
+        if (enemyPool.Count == 0)
+            StartCoroutine(InstantiateObjects(count, aux));
+        
         else
-        {
             StartCoroutine(DequeueEnemies(aux));
             
-        }
+       
     
     }
+
+    /// <summary>
+    /// Metodo que aguarda até a lista de chances de spawn ser completada para instanciar os objetos. 
+    /// </summary>
+    /// <param name="count"> tamanho da lista </param>
+    /// <param name="aux"> quantidade de inimigos a serem ativados na cena</param>
+    /// <returns>aguarda a lista ser completada </returns>
+    private IEnumerator InstantiateObjects(int count, int aux)
+    {
+        yield return new WaitUntil(() => spawnChance.Count.Equals(enemiesType.Count));
+        FillQueue(count, aux);
+    }
+
     /// <summary>
     /// Usado para ativar os inimigos com o tempo, para que eles não apareçam todos juntos no mesmo instante
     /// </summary>

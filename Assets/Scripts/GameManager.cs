@@ -29,10 +29,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //Time.timeScale = 0;
-        Time.timeScale = 1f;
-        //SpawnPlayer();
-        hordeManager.StartRound();
+        StartGame();
     }
     /// <summary>
     /// Usado para iniciar o game
