@@ -49,7 +49,6 @@ public class EnemyAI : MonoBehaviour
     {
         agent.speed = enemyData.speed;
         agent.SetDestination(currentPlayer.transform.position);
-        transform.LookAt(currentPlayer.transform);
         isMoving = true;
     }
     /// <summary>
@@ -59,7 +58,6 @@ public class EnemyAI : MonoBehaviour
     {
         isMoving = false;
         agent.SetDestination(this.transform.position);
-        transform.LookAt(currentPlayer.transform);
 
         if (Distance(currentPlayer.transform) <= 2.5f && Time.time > attackCounter)
         {
