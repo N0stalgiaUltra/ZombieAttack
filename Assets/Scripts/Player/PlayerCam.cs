@@ -14,5 +14,6 @@ public class PlayerCam : MonoBehaviour
     {
         cam.Follow = player;
         cam.LookAt = player;
+        cam.m_Lens.NearClipPlane = -50f;
     }
 }

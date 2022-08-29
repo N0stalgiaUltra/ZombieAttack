@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         Vector3 targetRot = ray.GetPoint(hit.distance);
-        transform.LookAt(new Vector3 (targetRot.x,transform.position.y, targetRot.z));
+        transform.LookAt(new Vector3 (targetRot.x, transform.position.y, targetRot.z));
 
     }
     void FixedUpdate()
