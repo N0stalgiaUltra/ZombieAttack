@@ -16,7 +16,6 @@ public class HordeManager : MonoBehaviour
     [SerializeField] private int killCount;
     public int totalEnemiesCount;
 
-
     private void Awake()
     {
         totalEnemiesCount = initialEnemiesCount + (hordeNumber * fixEnemyIncrease);
