@@ -14,11 +14,7 @@ public class EnemyCollider : EnemyHealth, ICollider
     /// <summary>
     /// Metodo implementado da interface ICollider
     /// </summary>
-    public void GetHit()
-    {
-        print(damage);
-        Damage(damage);
-    }
+    public void GetHit() => Damage(damage);
 
 
     private void OnTriggerEnter(Collider other)

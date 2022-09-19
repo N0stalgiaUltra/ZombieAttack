@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+    // TODO: melhorar a rotação junto do mouse.
     private void Rotate()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -48,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 targetRot = ray.GetPoint(hit.distance);
         transform.LookAt(new Vector3 (targetRot.x, transform.position.y, targetRot.z));
-
+        //this.transform.rotation = Quaternion.Euler(new Vector3(0, targetRot.y , 0));
     }
     void FixedUpdate()
     {

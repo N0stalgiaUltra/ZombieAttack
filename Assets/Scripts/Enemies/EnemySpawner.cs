@@ -13,11 +13,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<Transform> spawnPosition = new List<Transform>(3);
 
     private Queue<GameObject> enemyPool = new Queue<GameObject>();
-    void Start()
-    {
-       
-        
-    }
 
 
     /// <summary>

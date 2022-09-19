@@ -64,8 +64,6 @@ public class GunLogic : MonoBehaviour
     /// <summary>
     /// Usado para desabilitar o colisor.
     /// </summary>
-    public void DisableCollider()
-    {
-        gunCollider.enabled = false;
-    }
+    public void DisableCollider() => gunCollider.enabled = false;
+
 }

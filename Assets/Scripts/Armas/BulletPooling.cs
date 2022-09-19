@@ -6,11 +6,13 @@ using UnityEngine;
 /// </summary>
 public class BulletPooling : MonoBehaviour
 {
-    
-    [SerializeField] private BulletLogic bulletPrefab;
+
+    //[SerializeField] private BulletLogic bulletPrefab;
+    [SerializeField] private BulletFactory _bulletFactory;
 
     [SerializeField] private Queue<BulletLogic> bulletQueue = new Queue<BulletLogic>(35);
     int capacity = 35;
+    
 
     public static BulletPooling instance;
     void Awake()
@@ -24,10 +26,10 @@ public class BulletPooling : MonoBehaviour
 
         for (int i = 0; i < capacity; i++)
         {
-            BulletLogic aux = Instantiate(bulletPrefab, this.transform);
-            aux.gameObject.SetActive(false);
-            bulletQueue.Enqueue(aux);
-            
+            //BulletLogic bulletLogic = _bulletFactory.GetNewInstance();
+            //bulletLogic.gameObject.SetActive(false);
+            //bulletQueue.Enqueue(bulletLogic);
+            bulletQueue.Enqueue(_bulletFactory.GetNewInstance());
         }
     }
 
@@ -40,7 +42,6 @@ public class BulletPooling : MonoBehaviour
     {
         if (bulletQueue.Count != 0)
         {
-            
             BulletLogic aux = bulletQueue.Dequeue();
             aux.gameObject.GetComponent<BulletLogic>().playerTransform = bulletSpawn;
             aux.damage = bulletSpawn.GetComponentInParent<GunLogic>().Damage;

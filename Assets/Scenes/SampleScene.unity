@@ -2418,17 +2418,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15756226, y: 3.2712703, z: 10.680679}
   m_Center: {x: 0.07257843, y: 1.5973432, z: 5.3403397}
---- !u!114 &654517368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6244723851480963365, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-  m_PrefabInstance: {fileID: 6244723851900337501}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c84792c6d022ff545aa6fee8977588dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &693751063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5326,7 +5315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1649613171
 Transform:
   m_ObjectHideFlags: 0
@@ -6506,7 +6495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588127840092072, guid: b5a75d52478f3443e853501f64dbae36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0157118
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 4588127840092072, guid: b5a75d52478f3443e853501f64dbae36, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6560,6 +6549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1818416759}
   - component: {fileID: 1818416758}
+  - component: {fileID: 1818416760}
   m_Layer: 0
   m_Name: BulletPool
   m_TagString: Untagged
@@ -6579,7 +6569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef1f452bc77498468e778199cfd9709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 654517368}
+  _bulletFactory: {fileID: 1818416760}
 --- !u!4 &1818416759
 Transform:
   m_ObjectHideFlags: 0
@@ -6594,6 +6584,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1818416760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818416757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547fd2f07164414db39952d8f8d282d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 6244723851480963365, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
 --- !u!1001 &1844098636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8127,28 +8130,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 117758444}
     m_Modifications:
     - target: {fileID: 6244723851480963365, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244723851480963365, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1245727875}
-    - target: {fileID: 6244723851480963369, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6244723851480963370, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244723851480963370, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.050000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244723851480963370, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.050000004
       objectReference: {fileID: 0}
     - target: {fileID: 6244723851480963370, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8190,17 +8177,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6244723851480963374, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 6244723851480963375, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
       propertyPath: m_Name
       value: Bullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244723851480963375, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7910ad2c6674ddd40bcc89b444880b95, type: 3}

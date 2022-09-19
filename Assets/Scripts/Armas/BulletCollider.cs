@@ -27,11 +27,6 @@ public class BulletCollider : MonoBehaviour, ICollider
         BulletPooling.instance.ReplenishQueue(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print(other.gameObject.layer);
-        GetHit();
-        
-    }
+    private void OnTriggerEnter(Collider other) => GetHit();
 
 }
