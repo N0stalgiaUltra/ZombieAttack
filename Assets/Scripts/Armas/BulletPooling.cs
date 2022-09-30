@@ -11,9 +11,7 @@ public class BulletPooling : MonoBehaviour
     [SerializeField] private BulletFactory _bulletFactory;
 
     [SerializeField] private Queue<BulletLogic> bulletQueue = new Queue<BulletLogic>(35);
-    int capacity = 35;
-    
-
+    public int capacity = 35;
     public static BulletPooling instance;
     void Awake()
     {
@@ -43,9 +41,9 @@ public class BulletPooling : MonoBehaviour
         if (bulletQueue.Count != 0)
         {
             BulletLogic aux = bulletQueue.Dequeue();
-            aux.gameObject.GetComponent<BulletLogic>().playerTransform = bulletSpawn;
+
+            aux.gameObject.GetComponent<BulletLogic>().PlayerTransform = bulletSpawn;
             aux.damage = bulletSpawn.GetComponentInParent<GunLogic>().Damage;
-            
 
             aux.gameObject.SetActive(true);
             return aux;
@@ -64,13 +62,9 @@ public class BulletPooling : MonoBehaviour
     /// <param name="bulletObject">objeto a ser adicionado</param>
     public void ReplenishQueue(GameObject bulletObject)
     {
-        if (bulletQueue.Count != capacity)
-        {
-            BulletLogic aux = bulletObject.GetComponent<BulletLogic>();
-            bulletObject.SetActive(false);
-            bulletQueue.Enqueue(aux);
-        }
-        else
-            return ;
+        BulletLogic aux = bulletObject.GetComponent<BulletLogic>();
+        aux.ResetVelocity();
+        bulletQueue.Enqueue(aux);
+
     }
 }

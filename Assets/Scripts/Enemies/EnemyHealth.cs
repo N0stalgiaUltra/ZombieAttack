@@ -38,8 +38,6 @@ public class EnemyHealth : MonoBehaviour, IHealth
     {
         if (this.enemyHealth > 0)
             this.enemyHealth -= value;
-
-        print(this.enemyHealth);
     }
 
     /// <summary>

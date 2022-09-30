@@ -52,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
         transform.LookAt(new Vector3 (targetRot.x, transform.position.y, targetRot.z));
         //this.transform.rotation = Quaternion.Euler(new Vector3(0, targetRot.y , 0));
     }
+    private void Update()
+    {
+        Rotate();
+
+    }
     void FixedUpdate()
     {
         #region Quando instalar o Photon
@@ -60,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         #endregion
         
         Move();
-        Rotate();
     }
 
 }

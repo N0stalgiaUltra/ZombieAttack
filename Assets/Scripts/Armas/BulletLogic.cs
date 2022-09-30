@@ -13,16 +13,35 @@ public class BulletLogic : MonoBehaviour
 
     public Transform playerTransform;
 
+    private bool isMoving;
+
+
     private void Start()
     {
-        transform.localPosition = playerTransform.position;
-        transform.rotation = playerTransform.rotation;
-
+        this.transform.localPosition = playerTransform.position;
+        isMoving = false;
     }
     void FixedUpdate()
     {
-        if (gameObject.activeSelf)
-            rbBullet.AddForce(transform.forward * speed, ForceMode.Impulse);
+        if (gameObject.activeSelf && !isMoving)
+        {
+            rbBullet.AddForce(playerTransform.transform.forward * speed, ForceMode.Impulse);
+            isMoving = true;
+        }
 
     }
+    private void OnEnable()
+    {
+        if(!isMoving && playerTransform != null)
+            this.transform.localPosition = playerTransform.position;
+
+    }
+    public void ResetVelocity()
+    {
+        rbBullet.velocity = Vector3.zero;
+        isMoving = false;
+    }
+
+    public Transform PlayerTransform { get => this.playerTransform; set => playerTransform = value;}
+
 }
