@@ -140,6 +140,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rbBullet: {fileID: 6244723851480963374}
-  speed: 2
+  speed: 7.5
   damage: 0
-  playerTransform: {fileID: 0}

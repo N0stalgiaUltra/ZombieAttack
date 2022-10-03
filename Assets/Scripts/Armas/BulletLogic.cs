@@ -11,7 +11,7 @@ public class BulletLogic : MonoBehaviour
     [SerializeField] private float speed;
     public int damage;
 
-    public Transform playerTransform;
+    private Transform playerTransform;
 
     private bool isMoving;
 

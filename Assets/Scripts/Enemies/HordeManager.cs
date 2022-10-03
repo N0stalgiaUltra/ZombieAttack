@@ -6,14 +6,19 @@ using UnityEngine;
 /// </summary>
 public class HordeManager : MonoBehaviour
 {
-
+    [Header("Script References")]
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private HordeWarning hordeWarning;
+
+    [Header("Horde Control Parameters")]
     [SerializeField] private int hordeNumber = 3;
     [SerializeField] private int initialEnemiesCount = 10;
     [SerializeField] private int fixEnemyIncrease = 5;
-   
-    public int actualRound;
+    [SerializeField] private float secondsToRestartHorde;
+
+    [Header("Visualization Parameters")]
     [SerializeField] private int killCount;
+    public int actualRound;
     public int totalEnemiesCount;
 
     private void Awake()
@@ -53,7 +58,9 @@ public class HordeManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator WaitToRestart()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        hordeWarning.SetHordeText(true);
+        yield return new WaitForSecondsRealtime(secondsToRestartHorde);
+        hordeWarning.SetHordeText(false);
         StartRound();
     }
     /// <summary>
