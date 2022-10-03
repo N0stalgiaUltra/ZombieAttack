@@ -13,7 +13,7 @@ public class GunLogic : MonoBehaviour
     [SerializeField] private Collider gunCollider;
     public GameObject laserSight;
 
-    public static bool reloading;
+    public bool reloading;
     private int ammo;
     private float nextFire;
     private bool canShoot;
@@ -66,4 +66,5 @@ public class GunLogic : MonoBehaviour
     /// </summary>
     public void DisableCollider() => gunCollider.enabled = false;
 
+    public int Ammo { get => ammo; }
 }

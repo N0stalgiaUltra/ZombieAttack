@@ -9,22 +9,25 @@ using TMPro;
 /// </summary>
 public class PlayerUI : MonoBehaviour
 {
+    [SerializeField] private GunLogic gunLogic;
     [SerializeField] private Image healthBar;
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private TextMeshProUGUI reloadingText;
+
   
 
     void Start()
     {
         healthBar.fillAmount = playerHealth.HealthPlayer / playerHealth.TotalHealt;
         playerHealth.healthChanged += HealthChanged;
-        reloadingText.enabled = false;
+        reloadingText.text = "";
 
     }
 
     private void Update()
     {
-        reloadingText.enabled = GunLogic.reloading;
+        // TODO: check if player dont have a gun
+        reloadingText.text = gunLogic.reloading ? "Reloading" : $"Ammo: {gunLogic.Ammo}";
     }
     /// <summary>
     /// Usado para atualizar a barra vida do player
