@@ -22,9 +22,10 @@ public class IdleState : BaseState
             manager.SwitchState(manager.movingState);
     }
 
-    public override void OnCollisionState(StateManager manager)
+    public override void OnCollisionState(StateManager manager, Collision collision)
     {
-        manager.SwitchState(manager.hurtState);
+        if(collision.gameObject.CompareTag("Enemy"))
+            manager.SwitchState(manager.hurtState);
     }
 
     public override void UpdateState(StateManager manager)

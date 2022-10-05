@@ -5558,6 +5558,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 1697350796}
+  playerAnimation: {fileID: 1697350799}
+--- !u!114 &1697350799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3322948784139315466, guid: 6baaaefa740f43b4cbcb643afdceedc6, type: 3}
+  m_PrefabInstance: {fileID: 1697350794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697350795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ff22ec3c6c6fa4888e2299728edcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1702481661
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class StateManager : MonoBehaviour
     [Header("Component References")]
     [SerializeField] private Rigidbody playerRigidbody;
 
+    [SerializeField] private PlayerAnimation playerAnimation;
 
     private BaseState currentState;
     public IdleState idleState;
@@ -21,8 +22,8 @@ public class StateManager : MonoBehaviour
     private void Awake()
     {
         idleState = new IdleState(playerRigidbody);
-        movingState = new MovingState();
-        hurtState = new HurtState();
+        movingState = new MovingState(playerRigidbody);
+        hurtState = new HurtState(playerAnimation);
     }
     // Start is called before the first frame update
     private void Start()
@@ -35,10 +36,12 @@ public class StateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
+        if (Input.GetKeyDown(KeyCode.K))
+            SwitchState(hurtState);
     }
 
     private void FixedUpdate()
-    {
+    { 
         currentState.FixedUpdateState(this);
     }
     public void SwitchState(BaseState newState)
@@ -48,7 +51,7 @@ public class StateManager : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        currentState.OnCollisionState(this);
+        currentState.OnCollisionState(this, collision);
     }
 
 }

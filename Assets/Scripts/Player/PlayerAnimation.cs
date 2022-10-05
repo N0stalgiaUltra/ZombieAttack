@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator playerAnim;
+    private float endHurtAnim;
     /// <summary>
     /// Chamado quando o player está se movendo
     /// </summary>
@@ -24,6 +25,8 @@ public class PlayerAnimation : MonoBehaviour
     public void Hurt()
     {
         playerAnim.SetTrigger("Hurt");
+        AnimatorStateInfo info = playerAnim.GetCurrentAnimatorStateInfo(0);
+        endHurtAnim = info.normalizedTime;
     }
     /// <summary>
     /// Chamado quando o player morre
@@ -33,10 +36,7 @@ public class PlayerAnimation : MonoBehaviour
         playerAnim.SetTrigger("Die");
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-            Hurt();
-    }
+    public float EndHurtAnim { get => endHurtAnim;}
+
 }
 
