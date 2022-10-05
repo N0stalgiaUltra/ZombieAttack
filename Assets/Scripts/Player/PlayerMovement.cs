@@ -9,20 +9,27 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
+    [Header ("Components References")]
     [SerializeField] private Rigidbody rb;
+
+    [Header("Variables References")]
     [SerializeField] private float movementVelocity;
-
+    
+    [Header ("Script References")]
     [SerializeField] private PlayerAnimation playerAnim;
-
-    //[SerializeField] private PhotonView view;
-
     private RaycastHit hit;
 
     /// <summary>
     /// Metodo usado para movimentar o player
     /// </summary>
+
+    private void Start()
+    {
+        MovingState.OnMove += Move;
+    }
     private void Move()
     {
+        //chama o evento
         //muda animação para correr
 
         float movx = Input.GetAxis("Horizontal");
@@ -44,13 +51,11 @@ public class PlayerMovement : MonoBehaviour
     private void Rotate()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (!Physics.Raycast(ray, out hit))
             return;
 
         Vector3 targetRot = ray.GetPoint(hit.distance);
         transform.LookAt(new Vector3 (targetRot.x, transform.position.y, targetRot.z));
-        //this.transform.rotation = Quaternion.Euler(new Vector3(0, targetRot.y , 0));
     }
     private void Update()
     {
@@ -64,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         //rb.velocity = movement * movementVelocity;
         #endregion
         
-        Move();
     }
 
+    
 }

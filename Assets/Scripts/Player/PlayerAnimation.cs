@@ -32,4 +32,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         playerAnim.SetTrigger("Die");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            Hurt();
+    }
 }
+
